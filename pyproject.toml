@@ -1,0 +1,17 @@
+[project]
+name = "project-math-of-data"
+version = "0.1.0"
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.4",
+    "pillow>=12.3.0",
+    "pywavelets>=1.10.0",
+    "scipy>=1.18.1",
+    "tqdm>=4.70.1",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+]
