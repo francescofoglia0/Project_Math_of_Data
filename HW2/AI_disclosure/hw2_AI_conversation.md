@@ -3,11 +3,101 @@
 - **Tool:** Claude (Cowork mode, desktop app), model Claude Opus 5.5
 - **Date:** 22 November 2026
 - **Group member using AI:** Antonio
-- **Scope:** theory parts of Section 1 — 1.1 (3), (4.a), (4.b), (4.c) and 1.2 (4). Questions 1.1 (1) and (2) were done before this conversation.
+- **Scope:** theory parts of Section 1 — 1.1 (1)–(4.c) and 1.2 (4). Questions 1.1 (1) and (2) were done in an earlier conversation that was deleted by mistake (see Section 0).
 
 **How the AI was used.** The chat could not be shared through a public link, so this file is a complete transcript. Antonio wrote every solution by hand. He sent photos of his notes, and Claude (i) checked the mathematics and (ii) turned the handwritten argument into a clean markdown/LaTeX cell, following Antonio's strategy. Claude was told to follow a style guide built from HW1 and to stop and report any error instead of fixing it silently. The photos of the handwritten notes are in the folder `hw2_chat_images/`, next to this file.
 
 Claude's replies below are copied verbatim. Antonio's messages are translated from Italian, with the original in parentheses.
+
+---
+
+## 0. Questions 1.1 (1) and (2) — earlier conversation (deleted)
+
+Antonio did questions 1.1 (1) and (2) with the same workflow in an earlier conversation, which he deleted by mistake, so that transcript is not available. What remains is below.
+
+**1.1 (1).** Antonio's handwritten solution:
+
+![Handwritten notes, 1.1 (1)](hw2_chat_images/00_q1.jpeg)
+
+The final markdown cell approved in that conversation is reported below. It was kept as the reference example in the style guide that Antonio and Claude use for the transcriptions.
+
+```markdown
+We first expand $f$ in terms of inner products:
+$$
+f(x,y) = a^2 \langle x, y \rangle - a \langle x, c \rangle - a \langle y, b \rangle + \langle b, c \rangle .
+$$
+Then
+$$
+\begin{align*}
+\nabla f(x,y) &= a^2 \begin{pmatrix} y \\ x \end{pmatrix} - a \begin{pmatrix} c \\ b \end{pmatrix} = 0 \\ \\
+\implies \begin{pmatrix} x^\star \\ y^\star \end{pmatrix} &= \begin{pmatrix} b/a \\ c/a \end{pmatrix}
+\end{align*}
+$$
+which is the unique first-order stationary point, since $a \neq 0$. The Hessian is constant:
+$$
+\nabla^2 f = a^2 \begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix}, \qquad I \in \mathbb{R}^{2 \times 2}.
+$$
+Its characteristic polynomial is
+$$
+\begin{align*}
+\det\left(\nabla^2 f - \lambda I_4\right)
+&= \det \begin{bmatrix} -\lambda I & a^2 I \\ a^2 I & -\lambda I \end{bmatrix} \\
+&= \det\left(\lambda^2 I - a^4 I\right) \\
+&= \left(\lambda^2 - a^4\right)^2 \\ \\
+\implies \lambda_{1,2} &= \pm a^2
+\end{align*}
+$$
+where the second equality is the hint, which applies because all blocks are scalar multiples of $I$ and therefore commute. Each eigenvalue has multiplicity $2$. Since $a \neq 0$, the Hessian has one strictly positive and one strictly negative eigenvalue, so it is indefinite and $(x^\star, y^\star)$ is a saddle point.
+```
+
+**1.1 (2).** There are no handwritten notes for this question. In Antonio's words, the only observation needed is that $f(x,y) = (ax - b)^\top(ay - c)$ is a product, so it vanishes as soon as one of the two factors is zero. Since $ax^\star - b = 0$ and $ay^\star - c = 0$, we have $f(x^\star, y) = 0 = f(x^\star, y^\star)$ for every $y$ and $f(x, y^\star) = 0 = f(x^\star, y^\star)$ for every $x$, so both saddle point inequalities hold with equality and $(x^\star, y^\star) = (b/a, c/a)$ solves the minimax problem.
+
+*(Original: "l'unica osservazione che va fatta è che basta avere uno fra $x^\star$ e $y^\star$ per annullare $f$ che è moltiplicativa, quindi è immediato verificare il caso di uguaglianza.")*
+
+---
+
+## 0. Questions 1.1 (1) and (2) — earlier conversation (deleted)
+
+Questions 1.1 (1) and (2) were worked on with Claude in an earlier conversation, which Antonio deleted by mistake, so that transcript is no longer available. The workflow was the same as below: Antonio solved the question by hand and Claude checked and transcribed it.
+
+**1.1 (1).** Antonio's handwritten solution:
+
+![Handwritten notes, 1.1 (1)](hw2_chat_images/00_q1.jpeg)
+
+The final markdown version produced in that conversation and approved by Antonio was saved in the shared style guide, and is reproduced here:
+
+```markdown
+We first expand $f$ in terms of inner products:
+$$
+f(x,y) = a^2 \langle x, y \rangle - a \langle x, c \rangle - a \langle y, b \rangle + \langle b, c \rangle .
+$$
+Then
+$$
+\begin{align*}
+\nabla f(x,y) &= a^2 \begin{pmatrix} y \\ x \end{pmatrix} - a \begin{pmatrix} c \\ b \end{pmatrix} = 0 \\ \\
+\implies \begin{pmatrix} x^\star \\ y^\star \end{pmatrix} &= \begin{pmatrix} b/a \\ c/a \end{pmatrix}
+\end{align*}
+$$
+which is the unique first-order stationary point, since $a \neq 0$. The Hessian is constant:
+$$
+\nabla^2 f = a^2 \begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix}, \qquad I \in \mathbb{R}^{2 \times 2}.
+$$
+Its characteristic polynomial is
+$$
+\begin{align*}
+\det\left(\nabla^2 f - \lambda I_4\right)
+&= \det \begin{bmatrix} -\lambda I & a^2 I \\ a^2 I & -\lambda I \end{bmatrix} \\
+&= \det\left(\lambda^2 I - a^4 I\right) \\
+&= \left(\lambda^2 - a^4\right)^2 \\ \\
+\implies \lambda_{1,2} &= \pm a^2
+\end{align*}
+$$
+where the second equality is the hint, which applies because all blocks are scalar multiples of $I$ and therefore commute. Each eigenvalue has multiplicity $2$. Since $a \neq 0$, the Hessian has one strictly positive and one strictly negative eigenvalue, so it is indefinite and $(x^\star, y^\star)$ is a saddle point.
+```
+
+**1.1 (2).** There is no handwritten solution. In Antonio's words: the only observation needed is that $f(x,y) = (ax - b)^\top(ay - c)$ is multiplicative, so it is enough to fix one of $x^\star = b/a$ or $y^\star = c/a$ to make $f$ vanish. Hence $f(x^\star, y) = f(x^\star, y^\star) = f(x, y^\star) = 0$ for all $x, y$, and both saddle point inequalities hold with equality.
+
+*(Original: "l'unica osservazione che va fatta è che basta avere uno fra $x^\star$ e $y^\star$ per annullare $f$ che è moltiplicativa, quindi è immediato verificare il caso di uguaglianza.")*
 
 ---
 
@@ -282,3 +372,14 @@ where (i) holds because $A = B^{-1}$, so $\lambda^A_{1,2} = 1/\lambda^B_{1,2}$. 
 ## 8. Claude
 
 *(This file.)*
+
+---
+
+## 9. User
+
+> q1 and q2 were done in another conversation, which I deleted by mistake. The photo is the solution of q1, while there is nothing on paper for q2, because the only observation needed is that it is enough to have one of $x^\star$ and $y^\star$ to make $f$ vanish, since it is multiplicative, so the equality case is immediate to check. Add these things.
+> *(q1 e q2 sono state fatte in un'altra conversazione, che per sbaglio ho eliminato. Questa in foto è la soluzione di q1, mentre quella di q2 non c'è su carta perché l'unica osservazione che va fatta è che basta avere uno fra x\* e y\* per annullare f che è moltiplicativa, quindi è immediato verificare il caso di uguaglianza. Aggiungi queste cose)*
+
+## 9. Claude
+
+*(Claude added Section 0 to this file.)*
