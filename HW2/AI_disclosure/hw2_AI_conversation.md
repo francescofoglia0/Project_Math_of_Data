@@ -56,51 +56,6 @@ where the second equality is the hint, which applies because all blocks are scal
 
 ---
 
-## 0. Questions 1.1 (1) and (2) — earlier conversation (deleted)
-
-Questions 1.1 (1) and (2) were worked on with Claude in an earlier conversation, which Antonio deleted by mistake, so that transcript is no longer available. The workflow was the same as below: Antonio solved the question by hand and Claude checked and transcribed it.
-
-**1.1 (1).** Antonio's handwritten solution:
-
-![Handwritten notes, 1.1 (1)](hw2_chat_images/00_q1.jpeg)
-
-The final markdown version produced in that conversation and approved by Antonio was saved in the shared style guide, and is reproduced here:
-
-```markdown
-We first expand $f$ in terms of inner products:
-$$
-f(x,y) = a^2 \langle x, y \rangle - a \langle x, c \rangle - a \langle y, b \rangle + \langle b, c \rangle .
-$$
-Then
-$$
-\begin{align*}
-\nabla f(x,y) &= a^2 \begin{pmatrix} y \\ x \end{pmatrix} - a \begin{pmatrix} c \\ b \end{pmatrix} = 0 \\ \\
-\implies \begin{pmatrix} x^\star \\ y^\star \end{pmatrix} &= \begin{pmatrix} b/a \\ c/a \end{pmatrix}
-\end{align*}
-$$
-which is the unique first-order stationary point, since $a \neq 0$. The Hessian is constant:
-$$
-\nabla^2 f = a^2 \begin{bmatrix} 0 & I \\ I & 0 \end{bmatrix}, \qquad I \in \mathbb{R}^{2 \times 2}.
-$$
-Its characteristic polynomial is
-$$
-\begin{align*}
-\det\left(\nabla^2 f - \lambda I_4\right)
-&= \det \begin{bmatrix} -\lambda I & a^2 I \\ a^2 I & -\lambda I \end{bmatrix} \\
-&= \det\left(\lambda^2 I - a^4 I\right) \\
-&= \left(\lambda^2 - a^4\right)^2 \\ \\
-\implies \lambda_{1,2} &= \pm a^2
-\end{align*}
-$$
-where the second equality is the hint, which applies because all blocks are scalar multiples of $I$ and therefore commute. Each eigenvalue has multiplicity $2$. Since $a \neq 0$, the Hessian has one strictly positive and one strictly negative eigenvalue, so it is indefinite and $(x^\star, y^\star)$ is a saddle point.
-```
-
-**1.1 (2).** There is no handwritten solution. In Antonio's words: the only observation needed is that $f(x,y) = (ax - b)^\top(ay - c)$ is multiplicative, so it is enough to fix one of $x^\star = b/a$ or $y^\star = c/a$ to make $f$ vanish. Hence $f(x^\star, y) = f(x^\star, y^\star) = f(x, y^\star) = 0$ for all $x, y$, and both saddle point inequalities hold with equality.
-
-*(Original: "l'unica osservazione che va fatta è che basta avere uno fra $x^\star$ e $y^\star$ per annullare $f$ che è moltiplicativa, quindi è immediato verificare il caso di uguaglianza.")*
-
----
-
 ## 1. User
 
 > Read Homework 2, Section 1 carefully. In this chat I will send you my proofs on paper to translate into markdown.
@@ -212,7 +167,7 @@ whenever $\alpha_k\beta_k \geq 0$, which holds both for nonnegative schedules an
 $$
 \left\|U_{k-1} \cdots U_0\right\|_2 \overset{\text{hint}}{\geq} \left|\det\left(U_{k-1} \cdots U_0\right)\right|^{1/4} = \prod_{j=0}^{k-1} \left|\det U_j\right|^{1/4} \geq 1
 $$
-so the product is never a contraction, it does not tend to $0$, and the iterates fail to converge from every starting point.
+so the product is never a contraction and does not tend to $0$: there is always some starting point $z^0$ from which the iterates do not converge to $z^\star$.
 
 For the constant case $U_k \equiv U$, the eigenvalues solve $(\lambda - 1)^2 + a^4\alpha\beta = 0$:
 $$
@@ -221,7 +176,7 @@ $$
 \alpha\beta < 0 &\implies \lambda = 1 \pm a^2\sqrt{-\alpha\beta}, \qquad \lambda_+ > 1
 \end{align*}
 $$
-In both cases $|\lambda_{\max}| \geq 1$. Since the matrix is the same at every step, so are its eigenvectors: for an eigenvector $v$ of $\lambda_{\max}$ we get $U^k v = \lambda_{\max}^k v$, hence $\|U^k v\|_2 = |\lambda_{\max}|^k \|v\|_2 \geq \|v\|_2$. Therefore $U^k \not\to 0$ and there is no convergence.
+In both cases $|\lambda_{\max}| \geq 1$. Since the matrix is the same at every step, so are its eigenvectors: for an eigenvector $v$ of $\lambda_{\max}$ we get $U^k v = \lambda_{\max}^k v$, hence $\|U^k v\|_2 = |\lambda_{\max}|^k \|v\|_2 \geq \|v\|_2$. Therefore $U^k \not\to 0$, and as before there is a starting point from which the iterates do not converge.
 ```
 
 ---
